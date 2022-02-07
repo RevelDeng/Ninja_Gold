@@ -1,0 +1,23 @@
+#option_wrapper {
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: space-evenly;
+}
+
+.option {
+    display: flex;
+    flex-direction: column;
+    border: 5px solid rgb(13, 131, 131);
+    padding: 5px;
+}
+
+#activities {
+    overflow: auto;
+    width: 100%;
+}
+
+ul {
+    height: 150px;
+    overflow: scroll;
+    border: 1px solid rgb(13, 131, 131);
+}

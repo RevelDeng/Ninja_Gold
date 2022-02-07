@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Ninja Gold</title>
+        {% load static%}
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+    </head>
+    <body>
+        <div id="wrapper">
+            <p>Your Gold: {{request.session.gold}}</p>
+            <div id="option_wrapper">
+                <form action="http://localhost:8000/process-money/" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="farm" value="farm">
+                    <div class="option">
+                        <p>Farm</p>
+                        <p>(earns 10 - 20 gold)</p>
+                        <button type="submit">Find Gold!</button>
+                    </div>
+                </form>
+                <form action="http://localhost:8000/process-money/" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="cave" value="cave">
+                    <div class="option">
+                        <p>Cave</p>
+                        <p>(earns 5 - 10 gold)</p>
+                        <button type="submit">Find Gold!</button>
+                    </div>
+                </form>
+                <form action="http://localhost:8000/process-money/" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="house" value="house">
+                    <div class="option">
+                        <p>House</p>
+                        <p>(earns 2 - 5 gold)</p>
+                        <button type="submit">Find Gold!</button>
+                    </div>
+                </form>
+                <form action="http://localhost:8000/process-money/" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="casino" value="casino">
+                    <div class="option">
+                        <p>Casino</p>
+                        <p>(earns/takes 0 - 50 gold)</p>
+                        <button type="submit">Find Gold!</button>
+                    </div>
+                </form>
+            </div>
+            Activities: 
+            <ul>
+            {% for i in request.session.activities %}
+                <li>{{i}}</li>
+            {% endfor %}
+            </ul>
+        </div>
+    </body>
+</html>
